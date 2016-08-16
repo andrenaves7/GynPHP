@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>404. Página não foi encontrada</title>
+	</head>
+	<body>
+		<?php if ($config->inProduction()): ?>
+			404. Página não foi encontrada
+		<?php else: ?>
+			<h1><?php echo $code; ?> - That's a catastrophic error.</h1>
+			<p><?php echo $msg; ?></p>
+		<?php endif; ?>
+	</body>
+</html>

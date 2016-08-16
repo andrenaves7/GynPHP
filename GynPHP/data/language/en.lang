@@ -1,0 +1,47 @@
+CONTROLLER_NOT_FOUND::The controller '$0' was not found
+CONTROLLER_CLASS_NOT_FOUND::The controller class '$0' was not found
+ACTION_NOT_FOUND::The action '$0' was not found
+ERROR_FILE_NOT_FOUND::The error file '$0' was not found
+PROPERTY_NOT_DEFINED::The property '$0' was not defined
+MUST_OVERRIDE_METHOD::You must override the method '$0'
+NOT_CLONEABLE_CLASS::'$0' is not a cloneable class
+DB_CONNECTION_NOT_ESTABLISHED::The database connection was not established
+NONE_TABLE_DEFINED::None table was defined
+INCORRECT_VALUE_FOR_ALIAS::Incorrect value for the alias '$0'
+FILTER_NOT_FOUND::The filter '$0' was not found
+FILTER_METHOD_NOT_FOUND::The method '$0' of filter '$1' was not found
+HELPER_NOT_FOUND::The helper '$0' was not found
+HELPER_METHOD_NOT_FOUND::The method '$0' of helper '$1' was not found
+LOADER_ALREADY_DEFINED::The loader '$0' is already defined
+LOADER_NOT_DEFINED::The loader '$0' is not defined
+LOG_FILE_NOT_FOUND::The log file '$0' was not found
+ADAPTER_NOT_FOUND::Adapter '$0' not found!
+MUST_DEFINE_PROPRETY::You must define the proprety '$0'
+VIEW_FILE_NOT_FOUND::The view file '$0' was not found
+LAYOUT_FILE_NOT_FOUND::The layout file '$0' was not found
+FILE_NOT_FOUND::The file '$0' was not found
+VALIDATOR_NOT_FOUND::The validator '$0' was not found
+MUST_DEFINE_VALIDATOR::You must define the value for the helper '$0'
+ILLEGAL_NUMBER_OF_ARGUMENTS::Illegal number of arguments
+PARAMETER_NOT_DEFINED::O parâmetro '$0' precisa ser definido
+MUST_BE_INTEGER::O parâmetro '$0' precisa ser um inteiro
+VALIDATOR_ALPHA::Este elemento só pode ter letras
+VALIDATOR_ALPHANUMERIC::Este elemento só pode ter letras e números
+VALIDATOR_FILEEXISTS::Este elemento não existe
+VALIDATOR_FILEEXISTS_NOT_DEFINED::Este elemento não está definido
+VALIDATOR_FILEMIMETYPE_NOT_DEFINED::O parâmetro '$0' não foi definido
+VALIDATOR_FILEMIMETYPE_NOT_VALID::O tipo do elemento não é válido
+VALIDATOR_FILESIZE_LENGTH_NOT_VALID::O tamanho desse elemento não é válido
+VALIDATOR_FILESIZE_IS_NOT_A_FILE::Este elemento não é um arquivo
+VALIDATOR_ISEMAIL::Este elemento não é um e-mail válido
+VALIDATOR_ISFILE::Este elemento precisa ser um arquivo
+VALIDATOR_ISIDENTICAL_MUST_BE_IDENTICAL::Este valor precisa ser identico a '$0'
+VALIDATOR_ISIDENTICAL_NOT_DEFINED::O parametro '$0' precisa ser definido
+VALIDATOR_ISINTEGER::Este elemento precisa ser do tipo inteiro
+VALIDATOR_ISNUMERIC::Este elemento precisa ser do tipo numérico
+VALIDATOR_ISUNIQUE::Este elemento já existe
+VALIDATOR_LENGTH_MUST_CONTAIN::Este elemento precisa conter '$0' caracteres
+VALIDATOR_LENGTH_MUST_CONTAIN_MORE_AND_LESS::Este elemento precisa conter mais do que '$0' caracteres e menos de '$1' caracteres
+VALIDATOR_MAXLENGTH::Este elemento excedeu o limite de '$0' caracteres
+VALIDATOR_MINLENGTH::Este elemento precisa ter no mínimo '$0' caracteres
+VALIDATOR_NOTEMPTY::Este elemento não pode ser vazio
