@@ -1,30 +1,31 @@
-CONTROLLER_NOT_FOUND::The controller '$0' was not found
-CONTROLLER_CLASS_NOT_FOUND::The controller class '$0' was not found
-ACTION_NOT_FOUND::The action '$0' was not found
-ERROR_FILE_NOT_FOUND::The error file '$0' was not found
-PROPERTY_NOT_DEFINED::The property '$0' was not defined
-MUST_OVERRIDE_METHOD::You must override the method '$0'
-NOT_CLONEABLE_CLASS::'$0' is not a cloneable class
-DB_CONNECTION_NOT_ESTABLISHED::The database connection was not established
-NONE_TABLE_DEFINED::None table was defined
-INCORRECT_VALUE_FOR_ALIAS::Incorrect value for the alias '$0'
-FILTER_NOT_FOUND::The filter '$0' was not found
-FILTER_METHOD_NOT_FOUND::The method '$0' of filter '$1' was not found
-HELPER_NOT_FOUND::The helper '$0' was not found
-HELPER_METHOD_NOT_FOUND::The method '$0' of helper '$1' was not found
-LOADER_ALREADY_DEFINED::The loader '$0' is already defined
-LOADER_NOT_DEFINED::The loader '$0' is not defined
-LOG_FILE_NOT_FOUND::The log file '$0' was not found
-ADAPTER_NOT_FOUND::Adapter '$0' not found!
-MUST_DEFINE_PROPRETY::You must define the proprety '$0'
-VIEW_FILE_NOT_FOUND::The view file '$0' was not found
-LAYOUT_FILE_NOT_FOUND::The layout file '$0' was not found
-FILE_NOT_FOUND::The file '$0' was not found
-VALIDATOR_NOT_FOUND::The validator '$0' was not found
-MUST_DEFINE_VALIDATOR::You must define the value for the helper '$0'
-ILLEGAL_NUMBER_OF_ARGUMENTS::Illegal number of arguments
+CONTROLLER_NOT_FOUND::O controller '$0' não foi encontrado
+CONTROLLER_CLASS_NOT_FOUND::A classe do controller '$0' não foi encontrada
+ACTION_NOT_FOUND::O action '$0' não foi encontrado
+ERROR_FILE_NOT_FOUND::O arquivo de erro '$0' não foi encontrado
+PROPERTY_NOT_DEFINED::A propriedade '$0' não foi definida
+MUST_OVERRIDE_METHOD::O método '$0' precisa ser reescrito
+NOT_CLONEABLE_CLASS::A classe '$0' não pode ser clonada
+DB_CONNECTION_NOT_ESTABLISHED::Não foi possível estabelecer uma conexão com o banco de dados
+NONE_TABLE_DEFINED::Nenhuma tabela foi definida
+INCORRECT_VALUE_FOR_ALIAS::Valor incorreto para o alias '$0'
+FILTER_NOT_FOUND::O filter '$0' não foi encontrado
+FILTER_METHOD_NOT_FOUND::O método '$0' do filter '$1' não foi encontrado
+HELPER_NOT_FOUND::O helper '$0' não foi encontrado
+HELPER_METHOD_NOT_FOUND::O método '$0' do helper '$1' não foi encontrado
+LOADER_ALREADY_DEFINED::O loader '$0' já está definido
+LOADER_NOT_DEFINED::O loader '$0' não está definido
+LOG_FILE_NOT_FOUND::O arquivo de log '$0' não foi encontrado
+ADAPTER_NOT_FOUND::Adaptador '$0' não encontrado
+MUST_DEFINE_PROPRETY::A propriedade '$0' precisa ser definida
+VIEW_FILE_NOT_FOUND::O arquivo de view '$0' não foi encontrado
+LAYOUT_FILE_NOT_FOUND::O arquivo de layout '$0' não foi encontrado
+FILE_NOT_FOUND::O arquivo '$0' não foi encontrado
+VALIDATOR_NOT_FOUND::O validador '$0' não foi encontrado
+MUST_DEFINE_VALIDATOR::É preciso definir o valor para o helper '$0'
+ILLEGAL_NUMBER_OF_ARGUMENTS::Número ilegais de argumentos
 PARAMETER_NOT_DEFINED::O parâmetro '$0' precisa ser definido
 MUST_BE_INTEGER::O parâmetro '$0' precisa ser um inteiro
+PAGE_NOT_FOUND::Página não encontrada
 VALIDATOR_ALPHA::Este elemento só pode ter letras
 VALIDATOR_ALPHANUMERIC::Este elemento só pode ter letras e números
 VALIDATOR_FILEEXISTS::Este elemento não existe
