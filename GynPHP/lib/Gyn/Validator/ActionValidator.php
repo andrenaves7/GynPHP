@@ -96,13 +96,6 @@ class ActionValidator
 		}
 	}
 
-	/**
-	 * 
-	 * @param string $method
-	 * @param array $args
-	 * @throws \Exception
-	 * @return \Gyn\Validator\Action
-	 */
 	public function __call($method, $args)
 	{
 		$translate = Language::getInstance();

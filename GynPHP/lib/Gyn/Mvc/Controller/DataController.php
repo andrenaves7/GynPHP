@@ -172,7 +172,7 @@ class DataController implements DataControllerInterface
 	
 	/**
 	 * 
-	 * @return multitype:
+	 * @return array:
 	 */
 	public function getParams()
 	{

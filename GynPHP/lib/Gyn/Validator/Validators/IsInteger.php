@@ -46,7 +46,7 @@ class IsInteger extends Validator implements ValidatorInterface
 	
 		if (!is_numeric($value)) {
 			$this->setStatus(false);
-		} else if(!preg_match('/^[1-9][0-9]*$/', $value)) {
+		} else if(!preg_match('/^[0-9][0-9]*$/', $value)) {
 			$this->setStatus(false);
 		} else {
 			$this->setStatus(true);

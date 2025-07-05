@@ -216,7 +216,6 @@ class MySQL implements ActionInterface
 	{
 		if (!is_numeric($string)) {
 			$string = addslashes(trim($string));
-			$string = get_magic_quotes_gpc()? stripcslashes($string): $string;
 		}
 		
 		return $string;

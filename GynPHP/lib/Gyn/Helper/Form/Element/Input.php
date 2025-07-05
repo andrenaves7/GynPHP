@@ -48,7 +48,7 @@ class Input extends Helper implements HelperInterface
 	{
 		$attr  = $this->getAttr($options);
 		$erros = '';
-		if(strlen($value) == 0){
+		if ($value != null && strlen($value) == 0) {
 			$value = $this->getValuesById($id);
 		}
 		$erros = $this->getErrorsListById($id);

@@ -44,9 +44,13 @@ class IsUnique extends Validator implements ValidatorInterface
 	 * @param string $field
 	 * @param array $except
 	 */
-	public function isUnique($value, $table = null, $field = null, array $except = array())
+	public function isUnique($value, $table = null, $field = null, array $except = array(), $msg = null)
 	{
-		$this->setMessage($this->language->translate('VALIDATOR_ISUNIQUE'));
+	    if($msg == null){
+		  $this->setMessage($this->language->translate('VALIDATOR_ISUNIQUE'));
+	    }else{
+	        $this->setMessage($msg);
+	    }
 		
 		if ($table === null) {
 			throw new \Exception($this->language->translate('PARAMETER_NOT_DEFINED', array('$table')), 1026);

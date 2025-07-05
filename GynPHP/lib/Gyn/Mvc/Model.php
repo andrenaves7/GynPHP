@@ -140,10 +140,6 @@ class Model implements ModelInterface
 		return $this->action->delete($this->name, $where);
 	}
 	
-	/**
-	 * 
-	 * @return \Gyn\Db\Interfaces\Action
-	 */
 	public function getAction()
 	{
 		return $this->action;

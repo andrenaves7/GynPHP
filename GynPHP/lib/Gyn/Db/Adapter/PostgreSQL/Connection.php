@@ -103,7 +103,7 @@ class Connection implements ConnectionInterface
 		$this->schema    = $config->db['schema'];
 		$this->user      = $config->db['user'];
 		$this->pass      = $config->db['pass'];
-		$this->charset   = ($config->db['charset']? $config->db['charset']: 'UTF8');
+		//$this->charset   = ($config->db['charset']? $config->db['charset']: 'UTF8');
 		
 		$this->config = $config;
 		
@@ -149,10 +149,6 @@ class Connection implements ConnectionInterface
 		}
 	}
 	
-	/**
-	 * 
-	 * @return PDO
-	 */
 	public function getConnection()
 	{
 		return $this->connection;

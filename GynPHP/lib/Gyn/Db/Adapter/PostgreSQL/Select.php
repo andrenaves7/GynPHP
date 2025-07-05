@@ -41,10 +41,6 @@ class Select implements SelectInterface
 	const RIGHT = 'RIGHT';
 	const INNER = 'INNER';
 	
-	/**
-	 * 
-	 * @var \Gyn\Db\Gyn\Db\Adapter\PostgreSQL\PostgreSQL
-	 */
 	private $action;
 	
 	/**
@@ -162,17 +158,8 @@ class Select implements SelectInterface
 	 */
 	public function where($condition, $value = null, $string = true)
 	{
-		if (is_int($value)) {
-			$value = (string) $value;
-		}
-		if ($value != null) {
-			$value = $this->action->quote($value);
-			$value = $string? '\'' . $value . '\'': $value;
-			$condition = str_replace('?', $value, $condition);
-		}
-		array_push($this->where, '(' . $condition . ')');
+		$this->where[] = '(' . $this->prepareCondition($condition, $value, $string) . ')';
 		$this->setQuery();
-		
 		return $this;
 	}
 	
@@ -182,14 +169,8 @@ class Select implements SelectInterface
 	 */
 	public function orWhere($condition, $value = null, $string = true)
 	{
-		if ($value != null) {
-			$value = $this->action->quote($value);
-			$value = $string? '\'' . $value . '\'': $value;
-			$condition = str_replace('?', $value, $condition);
-		}
-		array_push($this->orWhere, '(' . $condition . ')');
+		$this->orWhere[] = '(' . $this->prepareCondition($condition, $value, $string) . ')';
 		$this->setQuery();
-		
 		return $this;
 	}
 	
@@ -446,6 +427,54 @@ class Select implements SelectInterface
 			return array($table, $table);
 		}
 	}
+
+	/**
+	 * Prepara a condição substituindo os placeholders (?) por valores escapados com segurança.
+	 *
+	 * @param string $condition
+	 * @param mixed $value Pode ser string, int, array
+	 * @param bool $string Se os valores devem ser tratados como string (com aspas)
+	 * @return string Condição segura com valores interpolados
+	 */
+	private function prepareCondition($condition, $value, $string)
+	{
+		if (!is_array($value)) {
+			$value = [$value];
+		}
+
+		$placeholders = substr_count($condition, '?');
+
+		if ($placeholders !== count($value)) {
+			throw new \InvalidArgumentException(sprintf(
+				"Esperado %d valor(es) para %d placeholder(s) na condição '%s', mas %d valor(es) foram fornecidos.",
+				$placeholders,
+				$placeholders,
+				$condition,
+				count($value)
+			));
+		}
+
+		$segments = explode('?', $condition);
+		$result = '';
+
+		foreach ($segments as $i => $segment) {
+			$result .= $segment;
+			if (isset($value[$i])) {
+				$val = $value[$i];
+				if (is_int($val)) {
+					$quoted = (string)$val;
+				} else {
+					$quoted = $this->action->quote($val);
+					$quoted = trim($quoted, "'");
+					$quoted = $string ? "'" . $quoted . "'" : $quoted;
+				}
+				$result .= $quoted;
+			}
+		}
+
+		return $result;
+	}
+
 	
 	/**
 	 * 
@@ -454,33 +483,16 @@ class Select implements SelectInterface
 	 */
 	private function pgsqlFunctions($field)
 	{
-		$functions[] = 'AVG';
-		$functions[] = 'COUNT';
-		$functions[] = 'MIN';
-		$functions[] = 'MAX';
-		$functions[] = 'SDT';
-		$functions[] = 'SDTDEV';
-		$functions[] = 'SUM';
-		$functions[] = 'CONCAT';
-		$functions[] = 'COALESCE';
-		$functions[] = 'IFNULL';
-		$functions[] = 'LTRIM';
-		$functions[] = 'RTRIM';
-		$functions[] = 'TRIM';
-		$functions[] = 'IFNULL';
-		$functions[] = 'CASE';
-		$functions[] = 'ARRAY';
-		$functions[] = 'DISTINCT';
-		$functions[] = 'TO_CHAR';
-		$functions[] = 'REPLACE';
-		$functions[] = 'CAST';
-		$functions[] = 'FORMAT';
-	
-		foreach ($functions as $function) {
-			if (preg_match('/' . $function . '/i', $field)) {
-				return true;
-			}
-		}
-		return false;
+		static $functions = [
+			'AVG', 'COUNT', 'MIN', 'MAX', 'SDT', 'SDTDEV', 'SUM', 'CONCAT',
+			'COALESCE', 'IFNULL', 'LTRIM', 'RTRIM', 'TRIM', 'CASE', 'ARRAY',
+			'DISTINCT', 'TO_CHAR', 'REPLACE', 'CAST', 'FORMAT', 'EXTRACT'
+		];
+
+		// Usando expressão regular para detectar a função como uma palavra inteira
+		$pattern = '/\b(' . implode('|', $functions) . ')\b/i';
+
+		return preg_match($pattern, $field) === 1;
 	}
+
 }

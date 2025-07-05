@@ -447,11 +447,6 @@ class Select implements SelectInterface
 		}
 	}
 	
-	/**
-	 * 
-	 * @param unknown $field
-	 * @return boolean
-	 */
 	private function mysqlFunctions($field)
 	{
 		$functions[] = 'AVG';
@@ -468,6 +463,8 @@ class Select implements SelectInterface
 		$functions[] = 'RTRIM';
 		$functions[] = 'TRIM';
 		$functions[] = 'IFNULL';
+		$functions[] = 'DATE_FORMAT';
+		$functions[] = 'DISTINCT';
 		
 		foreach ($functions as $function) {
 			if (preg_match('/' . $function . '/i', $field)) {

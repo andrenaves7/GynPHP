@@ -223,15 +223,23 @@ class PostgreSQL implements ActionInterface
 	 * (non-PHPdoc)
 	 * @see \Gyn\Db\Interfaces\ActionInterface::quote()
 	 */
-	public function quote($string)
-	{
-		if (!is_numeric($string)) {
-			$string = addslashes(trim($string));
-			$string = get_magic_quotes_gpc()? stripcslashes($string): $string;
+	public function quote($value) {
+		if (is_null($value)) {
+			return 'NULL';
 		}
-		
-		return $string;
+	
+		if (is_bool($value)) {
+			return $value ? 'TRUE' : 'FALSE';
+		}
+	
+		// Remove caracteres perigosos como ; e --
+		$value = str_replace(["\\", "\0", "\n", "\r", "'", "\"", ";", "--"], [
+			"\\\\", "\\0", "\\n", "\\r", "''", '\"', '', ''
+		], $value);
+	
+		return "'" . $value . "'";
 	}
+	
 	
 	/**
 	 * (non-PHPdoc)

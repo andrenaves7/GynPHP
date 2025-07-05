@@ -148,10 +148,6 @@ class Connection implements ConnectionInterface
 		}
 	}
 	
-	/**
-	 * 
-	 * @return PDO
-	 */
 	public function getConnection()
 	{
 		return $this->connection;

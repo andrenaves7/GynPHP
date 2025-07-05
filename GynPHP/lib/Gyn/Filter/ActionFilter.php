@@ -50,10 +50,6 @@ class ActionFilter
 	 */
 	protected $config = null;
 	
-	/**
-	 * 
-	 * @var unknown
-	 */
 	public $filter = null;
 	
 	/**

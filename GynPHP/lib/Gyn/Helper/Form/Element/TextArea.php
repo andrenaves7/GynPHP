@@ -47,7 +47,7 @@ class TextArea extends Helper implements HelperInterface
 	{
 		$attr = $this->getAttr($options);
 		
-		if (strlen($value) == 0) {
+		if (strlen($value? $value: '') == 0) {
 			$value = $this->getValuesById($id);
 		}
 		

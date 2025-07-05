@@ -1,0 +1,72 @@
+# === SISTEMAS OPERACIONAIS ===
+.DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+Icon?
+.Spotlight-V100
+.Trashes
+Desktop.ini
+
+# === MACOS ===
+.AppleDouble
+.LSOverride
+
+# === LINUX ===
+*~
+
+# === WINDOWS ===
+$RECYCLE.BIN/
+
+# === PHP & COMPOSER ===
+vendor/
+composer.lock
+
+# === CACHES ===
+.cache/
+tmp/
+temp/
+*.log
+
+# === IDEs ===
+# VSCode
+.vscode/
+# PhpStorm / JetBrains
+.idea/
+# NetBeans
+nbproject/private/
+# Eclipse
+.project
+.buildpath
+.settings/
+
+# === TESTS E BUILD ===
+coverage/
+phpunit.xml
+phpunit.xml.dist
+/build/
+test-reports/
+
+# === GIT ===
+*.orig
+*.rej
+
+# === LOGS & DBs ===
+*.sqlite
+*.db
+*.log
+
+# === BACKUPS E TEMPORAIS ===
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# === SVN ===
+.svn/
+
+# === OUTROS PERSONALIZÁVEIS ===
+.env
+.env.*
+*.local
+*.secret

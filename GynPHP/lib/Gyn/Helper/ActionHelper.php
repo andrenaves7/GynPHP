@@ -90,13 +90,6 @@ class ActionHelper
 		
 	}
 	
-	/**
-	 * 
-	 * @param string $method
-	 * @param array $args
-	 * @throws \Exception
-	 * @return \Gyn\Helper\Action
-	 */
 	public function __call($method, $args)
 	{
 		$class['gyn'] = 'Gyn' . CB . 'Helper' . CB . $this->helper . CB . 'Element' . CB . ucfirst($method);

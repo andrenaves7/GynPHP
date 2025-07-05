@@ -41,9 +41,5 @@ class Data implements DataInterface
 	 */
 	public $controller = null;
 	
-	/**
-	 * 
-	 * @var \Gyn\Helper\Data
-	 */
 	public $helper = null;
 }

@@ -59,10 +59,6 @@ class DbStorage implements DbStorageInterface
 		$this->translate = Language::getInstance();
 	}
 	
-	/**
-	 * 
-	 * @return Ambigous <\Gyn\Db\DbStorage, \Gyn\Db\Storage>
-	 */
 	public static function getInstance()
 	{
 		if (!isset(self::$instance)) {

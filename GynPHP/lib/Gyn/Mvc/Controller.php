@@ -76,7 +76,7 @@ class Controller implements ControllerInterface
 		$this->data->helper     = new DataHelper();
 		$this->data->controller = $data;
 		$this->config           = $config;
-		
+
 		if ($_POST) {
 			$this->params = $_POST;
 			$this->data->helper->setValues($this->params);
@@ -130,7 +130,7 @@ class Controller implements ControllerInterface
 		} else {
 			$url = $this->config->root;
 		}
-	
+	   
 		header('Location: ' . $url);
 	}
 	

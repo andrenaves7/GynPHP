@@ -43,6 +43,8 @@ class Loader implements LoaderInterface
 	 * @var \Gyn\Mvc\Controller\DataController
 	 */
 	protected $data;
+
+	public $view;
 	
 	/**
 	 * 

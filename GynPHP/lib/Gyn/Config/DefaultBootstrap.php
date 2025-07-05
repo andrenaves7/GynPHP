@@ -89,7 +89,7 @@ class DefaultBootstrap implements BootstrapInterface
 		} else {
 			$url = $this->config->root;
 		}
-	
+		
 		header('Location: ' . $url);
 	}
 }

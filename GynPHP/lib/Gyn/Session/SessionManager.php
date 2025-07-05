@@ -74,7 +74,7 @@ class SessionManager implements SessionInterface
 	 * (non-PHPdoc)
 	 * @see \Gyn\Session\Interfaces\SessionInterface::set()
 	 */
-	public function set($key, $value)
+	public function set($key, mixed $value)
 	{
 		$_SESSION['Gyn\Session\SessionManager'][$key] = $value;
 	}
@@ -104,6 +104,13 @@ class SessionManager implements SessionInterface
 		} else {
 			return false;
 		}
+	}
+	
+	public function remove($key)
+	{
+	    if (isset($_SESSION['Gyn\Session\SessionManager'][$key])) {
+	        unset($_SESSION['Gyn\Session\SessionManager'][$key]);
+	    }
 	}
 	
 	/**

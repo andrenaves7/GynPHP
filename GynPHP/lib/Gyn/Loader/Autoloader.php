@@ -27,6 +27,7 @@
 namespace Gyn\Loader;
 
 use Gyn\Language\Language;
+
 /**
  *
  * @license new BSD
@@ -39,6 +40,12 @@ class Autoloader
 	 * @var array
 	 */
 	private $loaders = array();
+
+	/**
+	 *
+	 * @var array
+	 */
+	private $sql = array();
 	
 	public function __construct()
 	{

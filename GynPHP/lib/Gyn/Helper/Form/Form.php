@@ -35,10 +35,6 @@ use Gyn\Helper\ActionHelper;
  */
 class Form extends ActionHelper
 {
-	/**
-	 * (non-PHPdoc)
-	 * @see \Gyn\Helper\Action::init()
-	 */
 	public function init()
 	{
 		$this->helper = 'Form';

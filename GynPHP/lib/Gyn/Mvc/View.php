@@ -104,6 +104,16 @@ class View implements ViewInterface
 	 * @var \Gyn\Language\Language
 	 */
 	private $translate;
+
+	/**
+	 * Params to view
+	 * @var arary 
+	 */
+	private $params = array();
+
+	public $logSQL;
+
+	public $logLoader;
 	
 	/**
 	 * 
@@ -123,6 +133,19 @@ class View implements ViewInterface
 		$this->helper = new Helper($this->data, $this->config);
 		
 		$this->filter = new ActionFilter($this->data, $this->config);
+	}
+
+	public function setParam($key, $val)
+	{
+		$this->params[$key] = $val;
+	}
+
+	public function getParam($key)
+	{
+		if (isset($this->params[$key])) {
+			return $this->params[$key];
+		}
+		return '';
 	}
 	
 	public function setRenderView()
@@ -153,29 +176,35 @@ class View implements ViewInterface
 	 */
 	public function renderView($return = false, $url = null)
 	{
-		if ($this->renderView || $return) {
-			$moduleName     = $this->data->controller->getModule();
-			$controllerName = $this->data->controller->getController();
-			$actionName     = $this->data->controller->getAction();
-			
-			if (!$url) {
-				$fileName  = MODULES . DS . $moduleName . DS . 'views' . DS . 'scripts' . DS;
-				$fileName .= $controllerName . DS . $actionName . '.phtml';
-			} else {
-				$fileName = ROOT_DIR . DS . $url;
-			}
-			
-			if (file_exists($fileName)) {
-				$res = $this->requireOnce($fileName);
-				if ($return) {
-					return $res;
-				} else {
-					echo $res;
-				}
-			} else {
-				throw new \Exception($this->translate->translate('VIEW_FILE_NOT_FOUND', array($fileName)), 1007);
-			}
-		}
+	    $headers = $this->get_headers_custom();
+		//if(isset($headers['ACCESS-TOKEN']) && $headers['ACCESS-TOKEN'] == ACCESS_TOKEN && isset($headers['APP-TOKEN']) && $headers['APP-TOKEN'] == APP_TOKEN) {
+		if(isset($headers['ACCESS-TOKEN']) && isset($headers['APP-TOKEN'])) {
+	        //header('Content-type:application/json;charset=utf-8');
+	    } else {
+    		if ($this->renderView || $return) {
+    			$moduleName     = $this->data->controller->getModule();
+    			$controllerName = $this->data->controller->getController();
+    			$actionName     = $this->data->controller->getAction();
+    			
+    			if (!$url) {
+    				$fileName  = MODULES . DS . $moduleName . DS . 'views' . DS . 'scripts' . DS;
+    				$fileName .= $controllerName . DS . $actionName . '.phtml';
+    			} else {
+    				$fileName = ROOT_DIR . DS . $url;
+    			}
+    			
+    			if (file_exists($fileName)) {
+    				$res = $this->requireOnce($fileName);
+    				if ($return) {
+    					return $res;
+    				} else {
+    					echo $res;
+    				}
+    			} else {
+    				throw new \Exception($this->translate->translate('VIEW_FILE_NOT_FOUND', array($fileName)), 1007);
+    			}
+    		}
+	    }
 	}
 	
 	/**
@@ -280,4 +309,24 @@ class View implements ViewInterface
 		
 		return ob_get_clean();
 	}
+	
+    private function get_headers_custom() {
+         $arh = array();
+		  $rx_http = '/\AHTTP_/';
+		  foreach($_SERVER as $key => $val) {
+		    if( preg_match($rx_http, $key) ) {
+		      $arh_key = preg_replace($rx_http, '', $key);
+		      $rx_matches = array();
+		      // do some nasty string manipulations to restore the original letter case
+		      // this should work in most cases
+		      $rx_matches = explode('_', $arh_key);
+		      if( count($rx_matches) > 0 and strlen($arh_key) > 2 ) {
+		        foreach($rx_matches as $ak_key => $ak_val) $rx_matches[$ak_key] = ucfirst($ak_val);
+		        $arh_key = implode('-', $rx_matches);
+		      }
+		      $arh[$arh_key] = $val;
+		    }
+		  }
+		  return( $arh );
+    }
 }

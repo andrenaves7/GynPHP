@@ -113,7 +113,7 @@ class Language
 	{
 		if (isset($this->translate[$key])) {
 			$text = $this->translate[$key];
-			if (count($replace) > 0) {
+			if ($replace != null && count($replace) > 0) {
 				for ($i = 0; $i < count($replace); $i++) {
 					$text = str_replace('$' . $i, $replace[$i], $text);
 				}
